@@ -1,0 +1,47 @@
+server {
+    listen 0.0.0.0:80;
+    root /var/www/html;
+
+    location ~ ^/maps/lobby {
+        proxy_pass http://${HUB_HOST}$uri$is_args$args;
+    }
+
+    location ~ ^/maps/partygames {
+        proxy_pass http://${PARTYGAMES_HOST}$uri$is_args$args;
+    }
+
+    location ~ ^/maps/spawnworld {
+        proxy_pass http://${SURVIVAL_HOST}$uri$is_args$args;
+    }
+
+    location ~ ^/maps/mainworld_the_end {
+        proxy_pass http://${SURVIVAL_HOST}$uri$is_args$args;
+    }
+
+    location ~ ^/maps/mainworld_nether {
+        proxy_pass http://${SURVIVAL_HOST}$uri$is_args$args;
+    }
+
+    location ~ ^/maps/mainworld/ {
+        proxy_pass http://${SURVIVAL_HOST}$uri$is_args$args;
+    }
+
+    location ~ ^/maps/superiorworld {
+        proxy_pass http://${SKYBLOCK_HOST}$uri$is_args$args;
+    }
+
+    location ~ ^/maps/skyblock_spawnworld {
+        proxy_pass http://${SKYBLOCK_HOST}$uri$is_args$args;
+    }
+    
+    location / {
+        try_files $uri /mysql.php;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_pass php:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root/$fastcgi_script_name;
+    }
+}
