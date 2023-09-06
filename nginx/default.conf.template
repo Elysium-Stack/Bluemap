@@ -10,7 +10,7 @@ server {
         proxy_pass http://${PARTYGAMES_HOST}$uri$is_args$args;
     }
 
-    location ~ ^/maps/spawnworld {
+    location ~ ^/maps/spawn {
         proxy_pass http://${SURVIVAL_HOST}$uri$is_args$args;
     }
 
