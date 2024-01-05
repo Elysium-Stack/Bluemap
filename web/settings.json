@@ -19,7 +19,11 @@
     "mainworld",
     "mainworld_nether",
     "mainworld_nether_roof",
-    "mainworld_the_end"
+    "mainworld_the_end",
+    "hard_overworld",
+    "hard_nether",
+    "hard_nether_roof",
+    "hard_end"
   ],
   "scripts": [],
   "styles": []
