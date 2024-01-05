@@ -33,6 +33,22 @@ server {
     location ~ ^/maps/skyblock_spawnworld {
         proxy_pass http://${SKYBLOCK_HOST}$uri$is_args$args;
     }
+
+    location ~ ^/maps/hard_overworld {
+        proxy_pass http://${HARD_HOST}$uri$is_args$args;
+    }
+
+    location ~ ^/maps/hard_nether {
+        proxy_pass http://${HARD_HOST}$uri$is_args$args;
+    }
+
+    location ~ ^/maps/hard_end {
+        proxy_pass http://${HARD_HOST}$uri$is_args$args;
+    }
+
+    location ~ ^/maps/mainworld/ {
+        proxy_pass http://${HARD_HOST}$uri$is_args$args;
+    }
     
     location / {
         try_files $uri /mysql.php;
